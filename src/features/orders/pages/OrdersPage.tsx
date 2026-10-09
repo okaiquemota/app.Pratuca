@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/Field'
 import { useStore } from '@/features/stores/hooks'
 import { cn } from '@/lib/cn'
 import { errorMessage } from '@/lib/errors'
-import { formatCents, formatNumber, formatOrderNumber, formatTime } from '@/lib/format'
+import { formatCents, formatNumber, formatOrderNumber, formatTime, pluralize } from '@/lib/format'
 import { FULFILLMENT_LABEL } from '@/lib/labels'
 import { addDays, localDateString, zonedDayRange } from '@/lib/timezone'
 import type { OrderStatus } from '@/types/database'
@@ -156,7 +156,7 @@ export default function OrdersPage() {
                       </div>
                       <p className="mt-1 font-medium">{o.customer_name}</p>
                       <p className="mt-0.5 text-sm text-muted">
-                        {formatTime(o.created_at, store.timezone)} · {FULFILLMENT_LABEL[o.fulfillment]} · {o.order_items.reduce((s, i) => s + i.quantity, 0)} itens
+                        {formatTime(o.created_at, store.timezone)} · {FULFILLMENT_LABEL[o.fulfillment]} · {pluralize(o.order_items.reduce((s, i) => s + i.quantity, 0), 'item', 'itens')}
                       </p>
                       <p className="mt-2 font-semibold">{formatCents(o.total_cents)}</p>
                     </button>

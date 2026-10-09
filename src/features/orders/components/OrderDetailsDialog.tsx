@@ -58,15 +58,10 @@ export function OrderDetailsDialog({ order, timeZone, onClose }: Props) {
         footer={
           <>
             {canCancel ? (
-              <Button variant="ghost" className="text-danger-600 sm:mr-auto" onClick={() => setConfirmCancel(true)} disabled={update.isPending}>
+              <Button variant="danger-ghost" className="sm:mr-auto" onClick={() => setConfirmCancel(true)} disabled={update.isPending}>
                 Cancelar pedido
               </Button>
             ) : null}
-            {others.map((s) => (
-              <Button key={s} variant="outline" onClick={() => void change(s)} disabled={update.isPending}>
-                {STATUS_ACTION[s]}
-              </Button>
-            ))}
             {next ? (
               <Button onClick={() => void change(next)} loading={update.isPending}>
                 {STATUS_ACTION[next]}
@@ -85,6 +80,17 @@ export function OrderDetailsDialog({ order, timeZone, onClose }: Props) {
             <OrderStatusBadge status={order.status} />
             <span className="rounded-full bg-canvas px-2.5 py-0.5 text-xs font-semibold">{FULFILLMENT_LABEL[order.fulfillment]}</span>
           </div>
+
+          {others.length ? (
+            <div className="flex flex-wrap items-center gap-2 text-sm">
+              <span className="text-muted">Pular para:</span>
+              {others.map((s) => (
+                <Button key={s} variant="outline" size="sm" onClick={() => void change(s)} disabled={update.isPending}>
+                  {STATUS_LABEL[s]}
+                </Button>
+              ))}
+            </div>
+          ) : null}
 
           <section aria-labelledby="cliente" className="rounded-xl bg-canvas p-4">
             <h3 id="cliente" className="text-xs font-semibold tracking-wide text-muted uppercase">Cliente</h3>

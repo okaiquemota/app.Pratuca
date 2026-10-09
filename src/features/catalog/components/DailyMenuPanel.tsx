@@ -161,7 +161,7 @@ function DailyMenuEditor({ store, date, today, onDateChange, saved, active }: Ed
               Copiar do último cardápio
             </Button>
             {saved ? (
-              <Button variant="ghost" size="sm" className="text-danger-600" icon={<Trash2 className="size-4" aria-hidden />} onClick={() => setConfirmDelete(true)}>
+              <Button variant="danger-ghost" size="sm" icon={<Trash2 className="size-4" aria-hidden />} onClick={() => setConfirmDelete(true)}>
                 Remover
               </Button>
             ) : null}

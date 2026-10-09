@@ -3,7 +3,7 @@ import type { ButtonHTMLAttributes, ReactNode } from 'react'
 import { Link, type LinkProps } from 'react-router'
 import { cn } from '@/lib/cn'
 
-export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'dark'
+export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'danger-ghost' | 'dark'
 export type ButtonSize = 'sm' | 'md' | 'lg' | 'icon'
 
 const base =
@@ -16,6 +16,7 @@ const variants: Record<ButtonVariant, string> = {
   outline: 'border border-line bg-white text-ink hover:bg-brand-50',
   ghost: 'text-ink hover:bg-brand-100/70',
   danger: 'bg-danger-600 text-white hover:bg-danger-600/90',
+  'danger-ghost': 'text-danger-600 hover:bg-danger-50',
   dark: 'bg-ink text-brand-100 hover:bg-ink/90',
 }
 

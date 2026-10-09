@@ -81,7 +81,10 @@ export function Dialog({ open, onClose, title, description, children, footer, si
             <X className="size-5" aria-hidden />
           </Button>
         </div>
-        <div className="flex-1 overflow-y-auto px-5 py-4">{children}</div>
+        {/* recebe o foco inicial do <dialog> (autofocus) para não destacar o botão Fechar */}
+        <div className="flex-1 overflow-y-auto px-5 py-4 focus:outline-none" tabIndex={-1} autoFocus>
+          {children}
+        </div>
         {footer ? (
           <div className="flex flex-col-reverse gap-2 border-t border-line bg-canvas px-5 py-3 sm:flex-row sm:justify-end">
             {footer}
