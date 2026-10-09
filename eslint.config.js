@@ -26,6 +26,11 @@ export default tseslint.config(
     },
   },
   {
+    // provider + hook no mesmo módulo é intencional
+    files: ['src/app/router.tsx', 'src/components/ui/toast.tsx', 'src/features/auth/AuthProvider.tsx'],
+    rules: { 'react-refresh/only-export-components': 'off' },
+  },
+  {
     files: ['**/*.test.{ts,tsx}', 'src/test/**'],
     rules: { 'react-refresh/only-export-components': 'off' },
   },
